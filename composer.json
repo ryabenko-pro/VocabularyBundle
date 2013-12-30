@@ -1,0 +1,33 @@
+{
+    "name": "nord-ua/vocabulary-bundle",
+    "type": "symfony-bundle",
+    "description": "Manage vocabulary data like countries and cities easy.",
+    "keywords": ["vocabulary"],
+    "homepage": "https://github.com/nord-ua/VocabularyBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryabenko Sergey",
+            "email": "ryabenko.sergey@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "~2.1",
+        "symfony/form": "~2.1"
+    },
+    "require-dev": {
+        "twig/twig": "~1.5",
+        "doctrine/mongodb-odm-bundle": "3.0.*@dev"
+    },
+    "autoload": {
+        "psr-0": { "NordUa\\VocabularyBundle": "" }
+    },
+    "target-dir": "NordUa/VocabularyBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}
