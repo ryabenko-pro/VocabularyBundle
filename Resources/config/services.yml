@@ -1,0 +1,10 @@
+services:
+    vocabulary.service:
+        class: "NordUa\VocabularyBundle\Service\VocabularyService"
+        arguments: ["%locale%", @doctrine_mongodb.odm.default_document_manager]
+
+    twig.extension.vocabulary_twig:
+        class: "NordUa\VocabularyBundle\Templating\VocabularyTwig"
+        arguments: [@vocabulary.service]
+        tags:
+            - {name: "twig.extension"}

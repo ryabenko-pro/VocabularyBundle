@@ -56,20 +56,18 @@ class VocabularyService {
       $this->documents[$type][$doc->getSlug()] = $doc;
       
       // TREE PART
-      if (!is_null($parent)) {
-        if ($doc->hasParam($parent)) {
-          $parentKey = $doc->getLang() . '_' . $doc->getType() . '_' . $doc->getParam($parent);
-          if (isset($parents[$parentKey])) {
-            $doc->setParent($parents[$parentKey]);
-            $parents[$parentKey]->addChild($doc);
-          }
-        } else {
-          if (!isset($this->roots[$type]))
-            $this->roots[$type] = array();
+      if (!is_null($parent) && $doc->hasParam($parent)) {
+        $parentKey = $doc->getLang() . '_' . $doc->getType() . '_' . $doc->getParam($parent);
+        if (isset($parents[$parentKey])) {
+          $doc->setParent($parents[$parentKey]);
+          $parents[$parentKey]->addChild($doc);
+        }
+      } else {
+        if (!isset($this->roots[$type]))
+          $this->roots[$type] = array();
 
-          $this->roots[$type][$doc->getSlug()] = $doc;
-          $parents[$doc->getLang() . '_' . $doc->getType() . '_' . $doc->getSlug()] = $doc;
-        } 
+        $this->roots[$type][$doc->getSlug()] = $doc;
+        $parents[$doc->getLang() . '_' . $doc->getType() . '_' . $doc->getSlug()] = $doc;
       } // END OF TREE
       
     }
@@ -173,7 +171,7 @@ class VocabularyService {
    * @return \NordUa\VocabularyBundle\Repository\VocabularyRepository
    */
   protected function getVocabularyRepository() {
-    return $this->dm->getRepository('CommonVocabularyBundle:Vocabulary');
+    return $this->dm->getRepository('VocabularyBundle:Vocabulary');
   }
   
 }

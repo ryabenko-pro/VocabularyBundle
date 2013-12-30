@@ -2,6 +2,7 @@
 
 namespace NordUa\VocabularyBundle\Command;
 
+use NordUa\VocabularyBundle\Repository\VocabularyRepository;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -193,9 +194,9 @@ class VocabularyLoadCommand extends ContainerAwareCommand {
     return $this->getContainer()->get('doctrine_mongodb')->getManager();
   }
 
-  /** @return Cleverbag\CommonBundle\Repository\VocabularyRepository Description */
+  /** @return VocabularyRepository Description */
   public function getRepositoryVocabulary() {
-    return $this->getDocumentManager()->getRepository('CommonVocabularyBundle:Vocabulary');
+    return $this->getDocumentManager()->getRepository('VocabularyBundle:Vocabulary');
   }
   
 }

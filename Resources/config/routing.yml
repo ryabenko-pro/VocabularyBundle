@@ -1,0 +1,4 @@
+vocabulary_ajax:
+    resource: "@VocabularyBundle/Controller/"
+    type:     annotation
+    prefix:   /
