@@ -4,6 +4,6 @@ namespace NordUa\VocabularyBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class CommonVocabularyBundle extends Bundle
+class VocabularyBundle extends Bundle
 {
 }
