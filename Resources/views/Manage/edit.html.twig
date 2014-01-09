@@ -1,0 +1,18 @@
+{% extends 'VocabularyBundle::base.html.twig' %}
+
+{% block content %}
+    <h1>Редактирование словаря</h1>
+    {{ form_errors(form) }}
+    <form action="{{ action_path }}" method="post" {{ form_enctype(form) }}>
+        {{ form_row(form.slug) }}
+        {{ form_row(form.value) }}
+
+        {{ form_rest(form) }}
+        <hr>
+        <input type="submit" value="Сохранить" class="btn btn-primary"/>
+        {% if (form.vars.value.id) %}
+            <a href="{{ path('vocabulary_manage_index', {type: type, lang: lang}) }}">Отмена</a>
+        {% endif %}
+    </form>
+
+{% endblock %}

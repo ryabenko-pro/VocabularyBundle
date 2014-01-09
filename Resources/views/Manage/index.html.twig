@@ -1,0 +1,27 @@
+{% extends 'VocabularyBundle::base.html.twig' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Slug</th>
+                <th>Название</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        {% for doc in docs %}
+            <tr>
+                <td>{{ doc.id }}</td>
+                <td>{{ doc.slug }}</td>
+                <td>{{ doc.value }}</td>
+                <td><a href="{{ path('vocabulary_manage_edit', {type: type, lang: lang, id: doc.id}) }}">Редактировать</a></td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="3">
+                <a href="{{ path('vocabulary_manage_new', {type: type, lang: lang}) }}">Создать</a>
+            </td>
+        </tr>
+    </table>
+{% endblock %}

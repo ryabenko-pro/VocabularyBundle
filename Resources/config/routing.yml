@@ -1,4 +1,9 @@
 vocabulary_ajax:
-    resource: "@VocabularyBundle/Controller/"
+    resource: "@VocabularyBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /
+
+vocabulary_manage:
+    resource: "@VocabularyBundle/Controller/ManageController.php"
     type:     annotation
     prefix:   /
