@@ -3,11 +3,11 @@ VocabularyBundle
 
 This bundle lets you manage and use lists of data like countries, cities,
 subway station or categories in your project. Also it can be used for i18n.
+This bundle is using MongoDB as storage and released under MIT license.
 
 All you need to do is simply to create file with vocabulary data. Lets say
 you want create categories for items in online shop.
 
-This bundle is using MongoDB as storage and released under MIT license.
 
 Installation
 ------------
@@ -17,15 +17,14 @@ Composer:
 
 How does it works
 -----------------
-Each value in dictionary consist of 3 field: language, search key (somehow
-it called *slug*) and, actually, value. In items you must store slugs of
-vocabulary values. Later ````VocabularyService```` will give you actual values
-for them.
+Each value in dictionary consist of 4 field: type, language, search key (somehow
+it called *slug*) and, actually, value we will looking for. In items you must store slugs of
+vocabulary values. Later ````VocabularyService```` will give you actual values for them.
 
 
 Populate vocabulary
 -------------------
-1. Create file @BundleName/Resources/vocabulary/**category**.**en**.txt
+1. Create file @BundleName/Resources/vocabulary/**category**.**en**.txt. Here 'category' is type, 'en' is language. You have create separate file for each type.
 1. Fill the file with categories, just one category name per line
 1. Run ````cleverbag:vocabulary:load```` task to populate database
 
