@@ -23,18 +23,18 @@
         {% endfor %}
         </tbody>
         <tfoot>
-        <tr>
-            <td colspan="4">
-                <a href="{{ path('vocabulary_manage_new', {type: type, lang: lang}) }}">Создать</a>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <div class="pull-left">
-                    {{ knp_pagination_render(docs) }}
-                </div>
-            </td>
-        </tr>
+            <tr>
+                <td colspan="4">
+                    <a href="{{ path('vocabulary_manage_new', {type: type, lang: lang}) }}">Создать</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div class="pull-left">
+                        {{ knp_pagination_render(docs) }}
+                    </div>
+                </td>
+            </tr>
         </tfoot>
     </table>
 {% endblock %}
