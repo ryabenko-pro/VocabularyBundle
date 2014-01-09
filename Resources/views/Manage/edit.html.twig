@@ -10,9 +10,7 @@
         {{ form_rest(form) }}
         <hr>
         <input type="submit" value="Сохранить" class="btn btn-primary"/>
-        {% if (form.vars.value.id) %}
-            <a href="{{ path('vocabulary_manage_index', {type: type, lang: lang}) }}">Отмена</a>
-        {% endif %}
+        <a href="{{ path('vocabulary_manage_index', {type: type, lang: lang}) }}">Отмена</a>
     </form>
 
 {% endblock %}

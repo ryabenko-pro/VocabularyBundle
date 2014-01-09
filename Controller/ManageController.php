@@ -28,7 +28,7 @@ class ManageController extends Controller
       ->sort('slug', 'DESC')->getQuery();
 
     $paginator = $this->get('knp_paginator');
-    $pagination = $paginator->paginate($query, $request->get('page', 1), 20);
+    $pagination = $paginator->paginate($query, $request->get('page', 1), 2);
     $pagination->setUsedRoute('vocabulary_manage_index');
     $pagination->setPageRange(10);
 

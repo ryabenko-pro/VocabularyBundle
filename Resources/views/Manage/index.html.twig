@@ -1,27 +1,40 @@
 {% extends 'VocabularyBundle::base.html.twig' %}
 
 {% block content %}
-    <table>
+    <table class="table table-hover table-bordered table-striped">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Slug</th>
-                <th>Название</th>
-                <th>Действия</th>
-            </tr>
+        <tr>
+            <th>ID</th>
+            <th>Slug</th>
+            <th>Название</th>
+            <th>Действия</th>
+        </tr>
         </thead>
+        <tbody>
         {% for doc in docs %}
             <tr>
                 <td>{{ doc.id }}</td>
                 <td>{{ doc.slug }}</td>
                 <td>{{ doc.value }}</td>
-                <td><a href="{{ path('vocabulary_manage_edit', {type: type, lang: lang, id: doc.id}) }}">Редактировать</a></td>
+                <td>
+                    <a href="{{ path('vocabulary_manage_edit', {type: type, lang: lang, id: doc.id}) }}">Редактировать</a>
+                </td>
             </tr>
         {% endfor %}
+        </tbody>
+        <tfoot>
         <tr>
-            <td colspan="3">
+            <td colspan="4">
                 <a href="{{ path('vocabulary_manage_new', {type: type, lang: lang}) }}">Создать</a>
             </td>
         </tr>
+        <tr>
+            <td colspan="4">
+                <div class="pull-left">
+                    {{ knp_pagination_render(docs) }}
+                </div>
+            </td>
+        </tr>
+        </tfoot>
     </table>
 {% endblock %}
