@@ -7,6 +7,8 @@ subway station or categories in your project. Also it can be used for i18n.
 All you need to do is simply to create file with vocabulary data. Lets say
 you want create categories for items in online shop.
 
+This bundle is using MongoDB as storage and released under MIT license.
+
 Installation
 ------------
 Composer:
