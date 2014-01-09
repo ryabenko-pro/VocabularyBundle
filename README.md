@@ -60,7 +60,7 @@ them on beginning of string and separate with colon from value:
 Params
 ======
 Every vocabulary value can have custom params. E.g. Moscow subway have many stations with
-same name, but located on different branches [example](http://metro.yandex.ru/moscow/).
+same name, but located on different branches ([example](http://metro.yandex.ru/moscow/)).
 Params are useful to store important data:
 
     culture-red: Culture park [branch=red]
