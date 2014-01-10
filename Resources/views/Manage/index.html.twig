@@ -19,7 +19,7 @@
                 <td>{{ doc.value }}</td>
                 <td>
                     <a href="{{ path('vocabulary_manage_edit', {type: type, lang: lang, id: doc.id}) }}">{{ 'list.action.edit'|trans }}</a>
-                    <a onclick="return confirm({{ 'list.action.delete.confirm'|trans }});" href="{{ path('vocabulary_manage_delete', {type: type, lang: lang, id: doc.id}) }}">{{ 'list.action.delete'|trans }}</a>
+                    <a onclick="return confirm('{{ 'list.action.delete.confirm'|trans }}');" href="{{ path('vocabulary_manage_delete', {type: type, lang: lang, id: doc.id}) }}">{{ 'list.action.delete'|trans }}</a>
                 </td>
             </tr>
         {% endfor %}
