@@ -1,13 +1,14 @@
 {% extends 'VocabularyBundle::base.html.twig' %}
+{% trans_default_domain 'VocabularyBundle' %}
 
 {% block content %}
     <table class="table table-hover table-bordered table-striped">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Slug</th>
-            <th>Название</th>
-            <th>Действия</th>
+            <th>{{ 'list.id'|trans }}</th>
+            <th>{{ 'list.slug'|trans }}</th>
+            <th>{{ 'list.value'|trans }}</th>
+            <th>{{ 'list.actions'|trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +18,8 @@
                 <td>{{ doc.slug }}</td>
                 <td>{{ doc.value }}</td>
                 <td>
-                    <a href="{{ path('vocabulary_manage_edit', {type: type, lang: lang, id: doc.id}) }}">Редактировать</a>
+                    <a href="{{ path('vocabulary_manage_edit', {type: type, lang: lang, id: doc.id}) }}">{{ 'list.action.edit'|trans }}</a>
+                    <a onclick="return confirm({{ 'list.action.delete.confirm'|trans }});" href="{{ path('vocabulary_manage_delete', {type: type, lang: lang, id: doc.id}) }}">{{ 'list.action.delete'|trans }}</a>
                 </td>
             </tr>
         {% endfor %}
@@ -25,7 +27,7 @@
         <tfoot>
             <tr>
                 <td colspan="4">
-                    <a href="{{ path('vocabulary_manage_new', {type: type, lang: lang}) }}">Создать</a>
+                    <a href="{{ path('vocabulary_manage_new', {type: type, lang: lang}) }}" class="btn btn-primary">{{ 'list.action.create'|trans }}</a>
                 </td>
             </tr>
             <tr>

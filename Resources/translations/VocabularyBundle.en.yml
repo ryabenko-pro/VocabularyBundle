@@ -1,0 +1,23 @@
+form:
+    slug: Key
+    value: Value
+    save: Save
+    canecel: Cancel
+    title: Vocabulary edit
+
+list:
+    id: ID
+    slug: Key
+    value: Value
+    actions: Actions
+    action:
+        edit: Edit
+        delete: Delete
+        delete.confirm: Are you shure?
+        create: Create
+
+flash:
+    edit:
+        success: Successfully saved
+    delete:
+        success: Successfully removed

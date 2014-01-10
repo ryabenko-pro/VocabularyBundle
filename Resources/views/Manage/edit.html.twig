@@ -1,7 +1,8 @@
 {% extends 'VocabularyBundle::base.html.twig' %}
+{% trans_default_domain 'VocabularyBundle' %}
 
 {% block content %}
-    <h1>Редактирование словаря</h1>
+    <h1>{{ 'form.title'|trans }}</h1>
     {{ form_errors(form) }}
     <form action="{{ action_path }}" method="post" {{ form_enctype(form) }}>
         {{ form_row(form.slug) }}
@@ -9,8 +10,8 @@
 
         {{ form_rest(form) }}
         <hr>
-        <input type="submit" value="Сохранить" class="btn btn-primary"/>
-        <a href="{{ path('vocabulary_manage_index', {type: type, lang: lang}) }}">Отмена</a>
+        <input type="submit" value="{{ 'form.save'|trans }}" class="btn btn-primary"/>
+        <a href="{{ path('vocabulary_manage_index', {type: type, lang: lang}) }}">{{ 'form.cancel'|trans }}</a>
     </form>
 
 {% endblock %}

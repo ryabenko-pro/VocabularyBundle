@@ -1,0 +1,26 @@
+form:
+    slug: Ключ
+    value: Значение
+    save: Сохранить
+    cancel: Отмена
+    title: Редактирование словаря
+
+list:
+    id: ID
+    slug: Ключ
+    value: Значение
+    actions: Действия
+    action:
+        edit: Редактировать
+        delete: Удалить
+        delete.confirm: Вы уверены?
+        create: Создать
+
+flash:
+    edit:
+        success: Изменения сохранены
+    delete:
+        success: Успешно удалено
+
+
+

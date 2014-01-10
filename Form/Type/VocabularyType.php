@@ -15,8 +15,16 @@ class VocabularyType extends AbstractType
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
     $builder
-      ->add('slug', 'text', ['constraints' => [new NotBlank()]])
-      ->add('value', 'text', ['constraints' => [new NotBlank()]])
+      ->add('slug', 'text', [
+        'constraints' => [new NotBlank()],
+        'label' => 'form.slug',
+        'translation_domain' => 'VocabularyBundle'
+      ])
+      ->add('value', 'text', [
+        'constraints' => [new NotBlank()],
+        'label' => 'form.value',
+        'translation_domain' => 'VocabularyBundle'
+      ])
     ;
   }
 

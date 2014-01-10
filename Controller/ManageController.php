@@ -25,7 +25,7 @@ class ManageController extends Controller
       ->getRepository('VocabularyBundle:Vocabulary')->createQueryBuilder()
       ->field('type')->equals($type)
       ->field('lang')->equals($lang)
-      ->sort('slug', 'DESC')->getQuery();
+      ->sort('slug', 'ASC')->getQuery();
 
     $paginator = $this->get('knp_paginator');
     $pagination = $paginator->paginate($query, $request->get('page', 1), 20);
@@ -72,7 +72,7 @@ class ManageController extends Controller
     $form->handleRequest($request);
 
     if ($form->isValid()) {
-      $this->get('session')->getFlashBag()->add('success', 'Изменения сохранены');
+      $this->get('session')->getFlashBag()->add('success', $this->get('translator')->trans('flash.edit.success', [], 'VocabularyBundle'));
       $dm = $this->getDocumentManager();
       $dm->flush($object);
 
@@ -92,16 +92,16 @@ class ManageController extends Controller
   }
 
   /**
-   * @Route("/{id}/delete", name="vocabulary_manage_delete")
+   * @Route("/{type}/{lang}/{id}/delete", name="vocabulary_manage_delete")
    */
-  public function deleteAction($id)
+  public function deleteAction($type, $lang, $id)
   {
     $object = $this->getDocumentVocabulary($id);
 
     $this->getDocumentManager()->remove($object);
-    $this->getDocumentManager()->flush($object);
+    $this->getDocumentManager()->flush();
 
-    $this->get('session')->getFlashBag()->add('success', 'Удаление прошло успешно.');
+    $this->get('session')->getFlashBag()->add('success', $this->get('translator')->trans('flash.delete.success', [], 'VocabularyBundle'));
 
     return $this->redirect($this->generateUrl('vocabulary_manage_index', ['type' => $type, 'lang' => $lang]));
   }
