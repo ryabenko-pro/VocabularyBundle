@@ -1,0 +1,57 @@
+{% block vocabulary_choice_widget %}
+    {% spaceless %}
+        {% if expanded %}
+            {{ block('vocabulary_choice_widget_expanded') }}
+        {% else %}
+            {{ block('vocabulary_choice_widget_collapsed') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock vocabulary_choice_widget %}
+
+{% block vocabulary_choice_widget_expanded %}
+    {% spaceless %}
+        <div {{ block('widget_container_attributes') }}>
+            {% for child in form %}
+                {{ form_widget(child) }}
+                {{ form_label(child) }}
+            {% endfor %}
+        </div>
+    {% endspaceless %}
+{% endblock vocabulary_choice_widget_expanded %}
+
+{% block vocabulary_choice_widget_collapsed %}
+    {% spaceless %}
+        {% if required and empty_value is none and not empty_value_in_choices %}
+            {% set required = false %}
+        {% endif %}
+        <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+            {% if empty_value is not none %}
+                <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
+            {% endif %}
+            {% if preferred_choices|length > 0 %}
+                {% set options = preferred_choices %}
+                {{ block('vocabulary_choice_widget_options') }}
+                {% if choices|length > 0 and separator is not none %}
+                    <option disabled="disabled">{{ separator }}</option>
+                {% endif %}
+            {% endif %}
+            {% set options = choices %}
+            {{ block('vocabulary_choice_widget_options') }}
+        </select>
+    {% endspaceless %}
+{% endblock vocabulary_choice_widget_collapsed %}
+
+{% block vocabulary_choice_widget_options %}
+    {% spaceless %}
+        {% for group_label, choice in options %}
+            {% if choice is iterable %}
+                <optgroup label="{{ group_label|trans({}, translation_domain) }}">
+                    {% set options = choice %}
+                    {{ block('vocabulary_choice_widget_options') }}
+                </optgroup>
+            {% else %}
+                <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, translation_domain) }}</option>
+            {% endif %}
+        {% endfor %}
+    {% endspaceless %}
+{% endblock vocabulary_choice_widget_options %}

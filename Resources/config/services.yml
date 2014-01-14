@@ -8,3 +8,9 @@ services:
         arguments: [@vocabulary.service]
         tags:
             - {name: "twig.extension"}
+
+    vocabulary_choice:
+        class: NordUa\VocabularyBundle\Form\Type\VocabularyChoiceType
+        arguments: [@vocabulary.service]
+        tags:
+            - { name: form.type, alias: vocabulary_choice }
