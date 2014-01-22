@@ -26,7 +26,7 @@ class VocabularyLoadCommand extends ContainerAwareCommand {
 
   protected function configure() {
     $this
-      ->setName('cleverbag:vocabulary:load')
+      ->setName('vocabulary:load')
       ->setDescription('Insert fixtures to the DB')
       ->addOption('dry-run', 'dry', InputOption::VALUE_NONE, "Just show changes, without applying them")
       ->addOption('type', 't', InputOption::VALUE_IS_ARRAY|InputOption::VALUE_OPTIONAL, "Vocabulary type(s) to load")

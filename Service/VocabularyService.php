@@ -31,7 +31,7 @@ class VocabularyService {
   }
   
   public function preload($types) {
-    return $this->preloadTree($types, null);
+    $this->preloadTree($types, null);
   }
   
   public function preloadTree($types, $parent = 'parent') {
@@ -170,7 +170,7 @@ class VocabularyService {
   /**
    * @return \NordUa\VocabularyBundle\Repository\VocabularyRepository
    */
-  protected function getVocabularyRepository() {
+  public function getVocabularyRepository() {
     return $this->dm->getRepository('VocabularyBundle:Vocabulary');
   }
   

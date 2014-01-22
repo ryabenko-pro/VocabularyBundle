@@ -16,10 +16,10 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class VocabularyChoiceType extends ChoiceType
 {
 
+  private $cachedChoices;
+
   /** @var VocabularyService */
   protected $vs;
-
-  private $cachedChoices;
 
   public function __construct($vs) {
     $this->vs = $vs;
