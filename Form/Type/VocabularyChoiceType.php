@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class VocabularyChoiceType extends ChoiceType
 {
 
-  private $cachedChoices;
+  private $cachedChoices = [];
 
   /** @var VocabularyService */
   protected $vs;
@@ -62,19 +62,20 @@ class VocabularyChoiceType extends ChoiceType
    */
   private function getChoices(array $options)
   {
-    if (is_null($this->cachedChoices)) {
+    $type = $options['vocabulary'];
+    if (!isset($this->cachedChoices[$type])) {
       $values = [];
       $labels = [];
       /* @var $doc Vocabulary */
-      foreach ((array)$this->vs->getDocs($options['vocabulary']) as $doc) {
+      foreach ((array)$this->vs->getDocs($type) as $doc) {
         $values[] = $doc->getSlug();
         $labels[] = $doc->getValue();
       }
 
-      $this->cachedChoices = new ChoiceList($values, $labels);
+      $this->cachedChoices[$type] = new ChoiceList($values, $labels);
     }
 
-    return $this->cachedChoices;
+    return $this->cachedChoices[$type];
   }
 
 }
