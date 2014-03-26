@@ -26,7 +26,7 @@ Populate vocabulary
 -------------------
 1. Create file @BundleName/Resources/vocabulary/**category**.**en**.txt. Here 'category' is type, 'en' is language. You have create separate file for each type.
 1. Fill the file with categories, just one category name per line
-1. Run ````cleverbag:vocabulary:load```` task to populate database
+1. Run ````vocabulary:load```` task to populate database
 
 Retrieving all the values
 -------------------------
